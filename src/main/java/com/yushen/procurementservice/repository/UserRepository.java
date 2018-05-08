@@ -14,7 +14,7 @@ import com.yushen.procurementservice.login.entity.User;
  */
 public interface UserRepository extends CrudRepository<User, Integer> {
 
-    @Query("SELECT u.username as username,u.password as password FROM USER u WHERE u.username = ?1")
-    User getUserbyUserName(String username);
+    @Query("SELECT u.username as username,u.password as password FROM USER u WHERE u.username = ?1 AND u.user_telephone =?2")
+    User getUserbyUserName(String username,String user_telephone);
 
 }

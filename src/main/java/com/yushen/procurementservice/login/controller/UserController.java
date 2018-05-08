@@ -22,9 +22,31 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    /**
+     * 
+     * @param userName
+     * @param password
+     * @return
+     */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam(name = "userName") String userName,
-            @RequestParam(name = "password") String password) {
-        return userService.login(userName, password);
+    public String login(@RequestParam(name = "username") String username,
+            @RequestParam(name = "password") String password,
+            @RequestParam(name = "user_telephone") String user_telephone) {
+        return userService.login(username,user_telephone, password);
     }
+
+    /**
+     * 
+     * @param username
+     * @param password
+     * @param user_telephone
+     * @return
+     */
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(@RequestParam(name = "username") String username,
+            @RequestParam(name = "password") String password,
+            @RequestParam(name = "user_telephone") String user_telephone) {
+        return userService.register(username, user_telephone,password);
+    }
+
 }

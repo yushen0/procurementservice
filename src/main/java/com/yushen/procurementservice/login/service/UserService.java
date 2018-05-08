@@ -9,6 +9,9 @@ package com.yushen.procurementservice.login.service;
  */
 public interface UserService {
 
-    public String login(String userName, String password);
+    public String login(String userName, String user_telephone,String password);
+
+    public String register(String username, String user_telephone, String password);
+
 
 }

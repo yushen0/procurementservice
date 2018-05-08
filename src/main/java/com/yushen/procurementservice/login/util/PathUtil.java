@@ -10,4 +10,12 @@ package com.yushen.procurementservice.login.util;
  */
 public class PathUtil {
 
+    /**
+     * 返回配置文件的路径
+     * 
+     * @return
+     */
+    public static String getConfigPath() {
+        return null;
+    }
 }

@@ -2,6 +2,7 @@ package com.yushen.procurementservice.login.serviceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.yushen.procurementservice.login.dao.UserDao;
 import com.yushen.procurementservice.login.entity.User;
 import com.yushen.procurementservice.login.service.UserService;
 import com.yushen.procurementservice.repository.UserRepository;
@@ -17,11 +18,14 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+    
+    @Autowired
+    private UserDao userDao;
 
     @Override
-    public String login(String userName, String password) {
+    public String login(String userName, String user_telephone,String password) {
         // 通过登录名查询用户信息
-        User user = userRepository.getUserbyUserName(userName);
+        User user = userRepository.getUserbyUserName(userName,user_telephone);
         return checkUser(user, password);
     }
 
@@ -41,5 +45,11 @@ public class UserServiceImpl implements UserService {
         
         return "登录成功";
     }
+
+    @Override
+    public String register(String username, String user_telephone, String password) {
+        return userDao.register(username, user_telephone, password);
+    }
+
 
 }
